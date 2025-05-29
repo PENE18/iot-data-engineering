@@ -1,0 +1,15 @@
+paho-mqtt==1.6.1
+kafka-python==2.0.2
+influxdb-client==1.37.0
+psycopg2-binary==2.9.7
+pandas==2.0.3
+numpy==1.24.3
+flask==2.3.3
+flask-cors==4.0.0
+redis==4.6.0
+requests==2.31.0
+python-dotenv==1.0.0
+fastapi==0.103.1
+uvicorn==0.23.2
+sqlalchemy==2.0.20
+alembic==1.12.0
