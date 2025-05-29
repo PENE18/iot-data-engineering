@@ -57,8 +57,6 @@ graph TB
     
     subgraph "Visualization Layer"
         GRAFANA[Grafana Dashboards]
-        WEB[Web Dashboard]
-        MOBILE[Mobile App]
     end
     
     TS --> MQTT
@@ -77,8 +75,6 @@ graph TB
     REDIS --> REST
     
     REST --> GRAFANA
-    REST --> WEB
-    REST --> MOBILE
 ```
 
 ## Data Flow Architecture
