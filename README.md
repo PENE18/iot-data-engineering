@@ -1,3 +1,32 @@
+## Project Structure
+```
+iot-data-engineering/
+├── docker-compose.yml
+├── requirements.txt
+├── src/
+│   ├── device_simulators/
+│   │   ├── temperature_sensor.py
+│   │   ├── humidity_sensor.py
+│   │   └── motion_sensor.py
+│   ├── data_ingestion/
+│   │   ├── mqtt_consumer.py
+│   │   └── kafka_producer.py
+│   ├── data_processing/
+│   │   ├── stream_processor.py
+│   │   └── batch_processor.py
+│   ├── api/
+│   │   └── flask_api.py
+│   └── utils/
+│       ├── database.py
+│       └── config.py
+├── dashboards/
+│   └── grafana/
+├── data/
+└── logs/
+```
+
+
+
 # IoT Data Engineering Architecture Design
 
 ## Table of Contents
