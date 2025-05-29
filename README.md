@@ -41,7 +41,7 @@ graph TB
     subgraph "Data Processing Layer"
         CONSUMER[MQTT Consumer]
         STREAM[Stream Processor]
-        BATCH[Batch Processor]
+
     end
     
     subgraph "Storage Layer"
@@ -63,8 +63,6 @@ graph TB
     
     TS --> MQTT
     HS --> MQTT
-    MS --> MQTT
-    GPS --> MQTT
     
     MQTT --> CONSUMER
     CONSUMER --> KAFKA
