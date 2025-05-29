@@ -31,8 +31,6 @@ graph TB
     subgraph "IoT Devices Layer"
         TS[Temperature Sensors]
         HS[Humidity Sensors]
-        MS[Motion Sensors]
-        GPS[GPS Sensors]
     end
     
     subgraph "Message Broker Layer"
