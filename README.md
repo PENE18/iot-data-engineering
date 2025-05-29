@@ -9,8 +9,7 @@
 6. [Database Design](#database-design)
 7. [API Design](#api-design)
 8. [Deployment Architecture](#deployment-architecture)
-9. [Security Architecture](#security-architecture)
-10. [Monitoring & Observability](#monitoring--observability)
+
 
 ## System Overview
 
@@ -400,75 +399,5 @@ graph TD
     API --> GRAFANA[Grafana]
 ```
 
-## Security Architecture
-
-### Authentication & Authorization
-- API key-based authentication for device communication
-- JWT tokens for web application access
-- Role-based access control (RBAC) for different user types
-
-### Data Security
-- TLS encryption for MQTT communication
-- Database connection encryption
-- Sensitive data masking in logs
-- Regular security updates and patches
-
-### Network Security
-- Docker network isolation
-- Firewall rules for service communication
-- VPN access for remote management
-- Rate limiting on API endpoints
-
-## Monitoring & Observability
-
-### Application Metrics
-- **Device Metrics**: Connection status, data quality, health scores
-- **System Metrics**: Message throughput, processing latency, error rates
-- **Infrastructure Metrics**: CPU, memory, disk usage, network I/O
-
-### Logging Strategy
-```python
-# Structured logging across all components
-logger.info("mqtt_message_received", {
-    "device_id": device_id,
-    "topic": topic,
-    "payload_size": len(payload),
-    "timestamp": datetime.utcnow()
-})
-```
-
-### Alerting Rules
-- Device offline detection (> 5 minutes)
-- Sensor value anomalies (outside normal ranges)
-- System resource thresholds (CPU > 80%, Memory > 90%)
-- API response time degradation (> 500ms)
-
-### Health Check Endpoints
-```http
-GET /health/devices     # Device connectivity status
-GET /health/services    # Infrastructure service status  
-GET /health/system      # Overall system health
-```
-
-## Scalability Considerations
-
-### Horizontal Scaling
-- **Kafka Partitioning**: Scale message processing across partitions
-- **API Load Balancing**: Multiple Flask instances behind load balancer
-- **Database Sharding**: Distribute data across multiple InfluxDB instances
-
-### Performance Optimization
-- **Redis Caching**: Reduce database query load
-- **Batch Processing**: Group database writes for efficiency
-- **Connection Pooling**: Reuse database connections
-- **Async Processing**: Non-blocking I/O operations
-
-### Future Enhancements
-- **Apache Spark**: Big data processing for historical analysis
-- **Kubernetes**: Container orchestration for production deployment
-- **Machine Learning**: Predictive analytics and advanced anomaly detection
-- **Event Sourcing**: Immutable event log for data lineage
-
----
 
 *This architecture supports a robust, scalable IoT data engineering platform capable of handling thousands of devices with real-time processing and analytics capabilities.*
