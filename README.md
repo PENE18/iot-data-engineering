@@ -398,6 +398,62 @@ graph TD
     POSTGRES --> API
     API --> GRAFANA[Grafana]
 ```
+## Getting Started
 
+### 1. Clone and Setup
+```bash
+mkdir iot-data-engineering
+cd iot-data-engineering
+
+# Create the directory structure
+mkdir -p src/{device_simulators,data_ingestion,data_processing,api,utils}
+mkdir -p dashboards/grafana
+mkdir -p {data,logs,config}
+
+# Install Python dependencies
+pip install -r requirements.txt
+```
+
+### 2. Start Infrastructure
+```bash
+# Start all services
+docker-compose up -d
+
+# Check services are running
+docker-compose ps
+```
+
+### 3. Configure InfluxDB
+1. Visit http://localhost:8086
+2. Setup with credentials from docker-compose.yml
+3. Create token and update in code
+
+### 4. Run the Pipeline
+```bash
+# Terminal 1: Start device simulators
+python src/device_simulators/temperature_sensor.py &
+python src/device_simulators/humidity_sensor.py &
+
+# Terminal 2: Start MQTT-Kafka bridge
+python src/data_ingestion/mqtt_consumer.py &
+
+# Terminal 3: Start stream processor
+python src/data_processing/stream_processor.py &
+
+# Terminal 4: Start API
+python src/api/flask_api.py
+```
+
+### 5. Test the API
+```bash
+# Get all devices
+curl http://localhost:5000/api/devices
+
+# Get dashboard stats
+curl http://localhost:5000/api/dashboard/stats
+
+# Get alerts
+curl http://localhost:5000/api/alerts
+```
 
 *This architecture supports a robust, scalable IoT data engineering platform capable of handling thousands of devices with real-time processing and analytics capabilities.*
